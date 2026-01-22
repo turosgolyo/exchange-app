@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Project Path="Exchange.Domain/Exchange.Domain.csproj" />
+  <Project Path="Exchange.Services/Exchange.Services.csproj" />
+  <Project Path="Exchange.Shared/Exchange.Shared.csproj" />
+  <Project Path="Exchange.WebAPI/Exchange.WebAPI.csproj" />
+</Solution>

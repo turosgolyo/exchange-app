@@ -1,6 +1,0 @@
-@Exchange.WebAPI_HostAddress = http://localhost:5197
-
-GET {{Exchange.WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
