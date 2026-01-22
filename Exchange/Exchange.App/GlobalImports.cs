@@ -1,0 +1,13 @@
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using FluentValidation.Results;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Logging;
+global using System.Globalization;
+global using Syncfusion.Maui.Toolkit.Hosting;
+global using System.Collections.ObjectModel;
+global using FluentValidation;
+global using System.Windows.Input;
+global using Exchange.App.Configurations;
+global using CommunityToolkit.Maui;
+global using Exchange.App.Extensions;
