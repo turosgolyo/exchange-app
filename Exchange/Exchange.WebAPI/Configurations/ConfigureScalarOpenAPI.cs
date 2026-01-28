@@ -8,18 +8,18 @@ public static class ConfigureScalarOpenAPI
 {
     extension(IHostApplicationBuilder builder)
     {
-         IHostApplicationBuilder UseScalarOpenAPI()
-    {
-        builder.Services.AddOpenApi(options =>
+        public IHostApplicationBuilder UseScalarOpenAPI()
         {
-            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
-            options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-        });
+            builder.Services.AddOpenApi(options =>
+            {
+                options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
+                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+            });
 
-        builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddEndpointsApiExplorer();
 
-        return builder;
-    }
+            return builder;
+        }
     }
 
     extension(WebApplication app)
