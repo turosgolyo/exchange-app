@@ -1,5 +1,4 @@
 ﻿using Exchange.App.ViewModels;
-using Exchange.App.Views;
 
 namespace Exchange.App;
 
@@ -10,14 +9,10 @@ public partial class AppShell : Shell
     public AppShell()
     {
         this.BindingContext = new AppShellViewModel();
-
         InitializeComponent();
-
-        ConfigureRoutes();
     }
-    private static void ConfigureRoutes()
+    public static void ConfigureRoutes()
     {
-        Routing.RegisterRoute(CreateOrEditBillView.Name, typeof(CreateOrEditBillView));
-        Routing.RegisterRoute(ListBillsView.Name, typeof(ListBillsView));
+        Routing.RegisterRoute(LoginView.Name, typeof(LoginView));
     }
 }
