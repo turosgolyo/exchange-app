@@ -10,9 +10,11 @@ public partial class AppShell : Shell
     {
         this.BindingContext = new AppShellViewModel();
         InitializeComponent();
+        ConfigureRoutes();
     }
     public static void ConfigureRoutes()
     {
         Routing.RegisterRoute(LoginView.Name, typeof(LoginView));
+        Routing.RegisterRoute(MainView.Name, typeof(MainView));
     }
 }

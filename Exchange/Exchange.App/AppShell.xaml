@@ -7,6 +7,9 @@
     xmlns:local="clr-namespace:Exchange.App"
     xmlns:views="clr-namespace:Exchange.App.Views"
     xmlns:viewModels="clr-namespace:Exchange.App.ViewModels">
-
+    
+    <ShellContent
+        ContentTemplate="{DataTemplate views:LoginView}" 
+        Route="login"/>
 
 </Shell>
