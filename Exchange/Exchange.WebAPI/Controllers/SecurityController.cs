@@ -13,7 +13,7 @@ namespace Exchange.WebAPI.Controllers;
 public class SecurityController(ISecurityService securityService) : ControllerBase
 {
     [HttpPost]
-    [Route("api/security/register")]
+    [Route("api/register")]
     [ProducesResponseType(type: typeof(Success), statusCode:  200)]
     [EndpointDescription("Register a user using email and password.")]
     public async Task<IActionResult> RegisterAsync([FromBody][Required] RegisterRequestModel model)
@@ -26,7 +26,7 @@ public class SecurityController(ISecurityService securityService) : ControllerBa
     }
 
     [HttpPost]
-    [Route("api/security/login")]
+    [Route("api/login")]
     [ProducesResponseType(type: typeof(TokenResponseModel), statusCode: 200)]
     [EndpointDescription("Login using email and password.")]
     public async Task<IActionResult> LoginAsync([FromBody][Required] LoginRequestModel model)

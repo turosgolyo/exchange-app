@@ -11,11 +11,11 @@ public class ExchangeRateEntity
 
     public DateTime ExchangeDate { get; set; }
 
-    public string USDtoHUF { get; set; }
+    public double USDtoHUF { get; set; }
 
-    public string GBPtoHUF { get; set; }
+    public double GBPtoHUF { get; set; }
 
-    public string CHFtoHUF { get; set; }
+    public double CHFtoHUF { get; set; }
 
     public virtual ICollection<TransactionEntity> Transactions { get; set; }
 }

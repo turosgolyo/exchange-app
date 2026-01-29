@@ -16,7 +16,7 @@ public class TransactionEntity
 
     public double Amount { get; set; }
 
-    public string IDCard { get; set; }
+    public string IDType { get; set; }
 
     public string IDNumber { get; set; }
 
