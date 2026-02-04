@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-namespace Exchange.Domain.Database.Entities;
+﻿namespace Exchange.Domain.Database.Entities;
 
 public class TransactionEntity
 {
     public int Id { get; set; }
 
-    public string Type { get; set; }
+    public TransactionType Type { get; set; }
 
     public string FromCurrency { get; set; }
 

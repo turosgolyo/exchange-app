@@ -15,6 +15,9 @@ public static class DependencInjectionConfiguration
 
             builder.Services.AddTransient<ISecurityService, SecurityService>();
             builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddTransient<ITransactionService, TransactionService>();
+            builder.Services.AddTransient<IExchangeRateService, ExchangeRateService>();
+
 
             return builder;
         }

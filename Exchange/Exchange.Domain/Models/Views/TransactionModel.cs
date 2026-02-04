@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Numerics;
-using System.Text.Json.Serialization;
-
-namespace Exchange.Domain.Models;
+﻿namespace Exchange.Domain.Models;
 
 public partial class TransactionModel : ObservableObject
 {
@@ -12,7 +8,7 @@ public partial class TransactionModel : ObservableObject
 
     [ObservableProperty]
     [JsonPropertyName("type")]
-    private string type;
+    private TransactionType type;
 
     [ObservableProperty]
     [JsonPropertyName("fromCurrency")]

@@ -1,0 +1,15 @@
+﻿global using ErrorOr;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using Exchange.Domain.Models.Views;
+global using Exchange.Services.User;
+global using Exchange.Domain.Models.Requests.Security;
+global using Exchange.Domain.Models.Responses;
+global using Exchange.Services.Security;
+global using System.ComponentModel.DataAnnotations;
+global using Exchange.Domain.Models;
+global using Exchange.Services.Transaction;
+global using Exchange.Services.ExchangeRate;
+global using Microsoft.AspNetCore.Identity;
+global using Exchange.Domain.Database;
+global using Exchange.Domain.Database.Entities;

@@ -3,3 +3,7 @@ global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using Exchange.Domain.Database.Entities;
 global using Exchange.Domain.Database.Builders;
+global using Exchange.Domain.Enums;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Text.Json.Serialization;

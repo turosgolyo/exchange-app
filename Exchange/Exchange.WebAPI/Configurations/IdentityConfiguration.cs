@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Exchange.Domain.Database;
-using Exchange.Domain.Database.Entities;
+﻿
 
 namespace Exchange.WebAPI.Configurations;
 
@@ -27,7 +25,7 @@ public static class IdentityConfiguration
                 options.SignIn.RequireConfirmedAccount = true;
                 options.SignIn.RequireConfirmedEmail = true;
             })
-            .AddRoles<IdentityRole<Guid>>()
+            .AddRoles<RoleEntity>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return builder;

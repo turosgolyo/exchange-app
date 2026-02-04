@@ -1,10 +1,4 @@
-﻿using ErrorOr;
-using Exchange.Domain.Database;
-using Exchange.Domain.Models;
-using Exchange.Domain.Models.Views;
-using Exchange.Services.ExchangeRate;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿
 
 namespace Exchange.Services.Transaction;
 
@@ -23,17 +17,19 @@ public class ExchangeService(ApplicationDbContext dbContext) : IExchangeRateServ
     public async Task<ErrorOr<Success>> DeleteAsync(int id)
     {
         var result = await dbContext.ExchangeRates.AsNoTracking()
-                                          .Where(x => x.Id == id)
-                                          .ExecuteDeleteAsync();
+                                                  .Where(x => x.Id == id)
+                                                  .ExecuteDeleteAsync();
+
         return result > 0 ? Result.Success : Error.NotFound();
     }
 
     public async Task<ErrorOr<List<ExchangeRateModel>>> GetAllAsync() => await dbContext.ExchangeRates.Select(x => new ExchangeRateModel(x))
-                                                                                      .ToListAsync();
+                                                                                                      .ToListAsync();
 
     public async Task<ErrorOr<ExchangeRateModel>> GetByIdAsync(int id)
     {
         var exchangeRate = await dbContext.ExchangeRates.FirstOrDefaultAsync(x => x.Id == id);
+
         if (exchangeRate is null)
         {
             return Error.NotFound(description: "Exchange rate not found!");
@@ -50,7 +46,11 @@ public class ExchangeService(ApplicationDbContext dbContext) : IExchangeRateServ
             return Error.NotFound();
         }
 
+        existingExchangeRate = exchangeRate.ToEntity();
+
+        dbContext.ExchangeRates.Update(existingExchangeRate);
         await dbContext.SaveChangesAsync();
+
         return Result.Success;
     }
 }

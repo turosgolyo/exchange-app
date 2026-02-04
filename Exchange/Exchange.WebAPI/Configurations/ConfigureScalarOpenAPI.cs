@@ -30,8 +30,8 @@ public static class ConfigureScalarOpenAPI
 
         app.MapScalarApiReference(options =>
         {
-            options.WithTitle("MyApp API Documentation")
-                   .WithTheme(ScalarTheme.Default)
+            options.WithTitle("Exchange Rate API Documentation")
+                   .WithTheme(ScalarTheme.DeepSpace)
                    .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
                    .WithClassicLayout()
                    .ForceDarkMode()

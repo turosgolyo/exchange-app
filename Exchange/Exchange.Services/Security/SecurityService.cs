@@ -1,14 +1,11 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Exchange.Domain.Database.Entities;
 using Exchange.Domain.Models.Requests.Security;
 using Exchange.Domain.Models.Responses;
 using Exchange.Domain.Models.Settings;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -19,7 +16,12 @@ public class SecurityService(UserManager<UserEntity> userManager, IOptions<JWTSe
 {
     public async Task<ErrorOr<Success>> RegisterAsync(RegisterRequestModel model)
     {
-        var result = await userManager.CreateAsync(new UserEntity
+        if(model.Password != model.ConfirmPassword)
+        {
+            return Error.Failure(description: "Passwords do not match.");
+        }
+
+        UserEntity user = new UserEntity
         {
             Email = model.Email,
             EmailConfirmed = true,
@@ -27,9 +29,14 @@ public class SecurityService(UserManager<UserEntity> userManager, IOptions<JWTSe
             PhoneNumber = model.PhoneNumber,
             PhoneNumberConfirmed = true,
             UserName = $"{model.FirstName}.{model.LastName}"
-        }, model.Password);
+        };
+
+        var result = await userManager.CreateAsync(user, model.Password);
 
         var errors = result.Errors.Select(x => x.Description);
+
+        await userManager.AddToRoleAsync(user, "User");
+
         return result.Succeeded ? Result.Success : Error.Failure(description: string.Join(", ", errors));
     }
 

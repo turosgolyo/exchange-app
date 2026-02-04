@@ -1,21 +1,13 @@
-﻿using ErrorOr;
-using Microsoft.AspNetCore.Mvc;
-using Exchange.Domain.Models.Requests.Security;
-using Exchange.Domain.Models.Responses;
-using Exchange.Services.Security;
-using Swashbuckle.AspNetCore.Annotations;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace Exchange.WebAPI.Controllers;
+﻿namespace Exchange.WebAPI.Controllers;
 
 [ApiController]
+[ProducesResponseType(statusCode: 400, type: typeof(BadRequestObjectResult))]
 public class SecurityController(ISecurityService securityService) : ControllerBase
 {
     [HttpPost]
     [Route("api/register")]
     [ProducesResponseType(type: typeof(Success), statusCode:  200)]
-    [EndpointDescription("Register a user using email and password.")]
+    [EndpointDescription("Register user using email and password.")]
     public async Task<IActionResult> RegisterAsync([FromBody][Required] RegisterRequestModel model)
     {
         var result = await securityService.RegisterAsync(model);
