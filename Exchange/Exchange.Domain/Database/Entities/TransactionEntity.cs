@@ -6,13 +6,13 @@ public class TransactionEntity
 
     public TransactionType Type { get; set; }
 
-    public string FromCurrency { get; set; }
+    public TransactionCurrency FromCurrency { get; set; }
 
-    public string ToCurrency { get; set; }
+    public TransactionCurrency ToCurrency { get; set; }
 
     public double Amount { get; set; }
 
-    public string IDType { get; set; }
+    public IdType IDType { get; set; }
 
     public string IDNumber { get; set; }
 
