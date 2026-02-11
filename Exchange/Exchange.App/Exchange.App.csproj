@@ -71,6 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Exchange.Domain\Exchange.Domain.csproj" />
+	  <ProjectReference Include="..\Exchange.Services\Exchange.Services.csproj" />
+	  <ProjectReference Include="..\Exchange.Shared\Exchange.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\LoginView.xaml.cs">
 	    <DependentUpon>LoginView.xaml</DependentUpon>
 	  </Compile>
