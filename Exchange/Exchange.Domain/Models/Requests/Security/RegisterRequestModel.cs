@@ -1,4 +1,7 @@
-﻿namespace Exchange.Domain.Models.Requests.Security;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+namespace Exchange.Domain.Models.Requests.Security;
 
 public class RegisterRequestModel
 {
@@ -25,4 +28,5 @@ public class RegisterRequestModel
     [Required]
     [JsonPropertyName("confirmPassword")]
     public string ConfirmPassword { get; set; }
+
 }

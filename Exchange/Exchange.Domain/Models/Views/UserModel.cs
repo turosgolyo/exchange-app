@@ -4,16 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Exchange.Domain.Models.Requests.Security;
+namespace Exchange.Domain.Models.Views;
 
-public class LoginRequestModel
+public class UserModel
 {
     [Required]
     [JsonPropertyName("email")]
     public string Email { get; set; }
 
     [Required]
-    [JsonPropertyName("password")]
-    public string Password { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 }
 
+    

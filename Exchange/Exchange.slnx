@@ -1,7 +1,6 @@
 <Solution>
-  <Project Path="Exchange.App/Exchange.App.csproj" Id="02d66e50-98f6-4377-adcb-111ae290fb50" />
-  <Project Path="Exchange.Domain/Exchange.Domain.csproj" Id="aadbf2ca-c0a1-4be1-880f-38f7878d1f45" />
-  <Project Path="Exchange.Services/Exchange.Services.csproj" Id="569853ec-8290-4d34-a20f-c0d7e524c343" />
-  <Project Path="Exchange.Shared/Exchange.Shared.csproj" Id="3af8e3e1-881c-4a28-9031-3a86845d8159" />
-  <Project Path="Exchange.WebAPI/Exchange.WebAPI.csproj" Id="c08140d0-6c61-4cda-8dce-70fc52b1c862" />
+  <Project Path="Exchange.Domain/Exchange.Domain.csproj" />
+  <Project Path="Exchange.Services/Exchange.Services.csproj" />
+  <Project Path="Exchange.Shared/Exchange.Shared.csproj" />
+  <Project Path="Exchange.WebAPI/Exchange.WebAPI.csproj" />
 </Solution>
