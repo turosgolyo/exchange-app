@@ -12,11 +12,11 @@ public partial class TransactionModel : ObservableObject
 
     [ObservableProperty]
     [JsonPropertyName("fromCurrency")]
-    private string fromCurrency;
+    private TransactionCurrency fromCurrency;
 
     [ObservableProperty]
     [JsonPropertyName("toCurrency")]
-    private string toCurrency;
+    private TransactionCurrency toCurrency;
 
     [ObservableProperty]
     [JsonPropertyName("amount")]
@@ -24,7 +24,7 @@ public partial class TransactionModel : ObservableObject
 
     [ObservableProperty]
     [JsonPropertyName("idType")]
-    private string idType;
+    private IdType idType;
 
     [ObservableProperty]
     [JsonPropertyName("idNumber")]
