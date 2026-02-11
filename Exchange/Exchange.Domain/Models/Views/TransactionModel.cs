@@ -30,6 +30,14 @@ public partial class TransactionModel : ObservableObject
     [JsonPropertyName("idNumber")]
     private string idNumber;
 
+    [ObservableProperty]
+    [JsonPropertyName("exchangeRateId")]
+    private int exchangeRateId;
+
+    [ObservableProperty]
+    [JsonPropertyName("userId")]
+    private Guid userId;
+
 
     public TransactionModel()
     {
@@ -40,6 +48,8 @@ public partial class TransactionModel : ObservableObject
         this.Amount = amount;
         this.IdType = idType;
         this.IdNumber = idNumber;
+        this.ExchangeRateId = exchangeRateId;
+        this.UserId = userId;
     }
 
     public TransactionModel(TransactionEntity entity)
@@ -51,6 +61,8 @@ public partial class TransactionModel : ObservableObject
         this.Amount = entity.Amount;
         this.IdType = entity.IDType;
         this.IdNumber = entity.IDNumber;
+        this.ExchangeRateId = entity.ExchangeRateId;
+        this.UserId = entity.UserId;
     }
 
     public TransactionEntity ToEntity()
@@ -63,7 +75,9 @@ public partial class TransactionModel : ObservableObject
             ToCurrency = this.ToCurrency,
             Amount = this.Amount,
             IDType = this.IdType,
-            IDNumber = this.IdNumber
+            IDNumber = this.IdNumber,
+            ExchangeRateId = this.ExchangeRateId,
+            UserId = this.UserId,
         };
     }
 
@@ -76,5 +90,7 @@ public partial class TransactionModel : ObservableObject
         entity.Amount = this.Amount;
         entity.IDType = this.IdType;
         entity.IDNumber = this.IdNumber;
+        entity.ExchangeRateId = this.ExchangeRateId;
+        entity.UserId = this.UserId;
     }
 }

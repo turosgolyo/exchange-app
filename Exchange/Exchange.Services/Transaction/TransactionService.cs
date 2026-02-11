@@ -1,11 +1,4 @@
-﻿using ErrorOr;
-using Exchange.Domain.Database;
-using Exchange.Domain.Models;
-using Exchange.Domain.Models.Views;
-using Microsoft.EntityFrameworkCore;
-using System;
-
-namespace Exchange.Services.Transaction;
+﻿namespace Exchange.Services.Transaction;
 
 public class TransactionService(ApplicationDbContext dbContext) : ITransactionService
 {

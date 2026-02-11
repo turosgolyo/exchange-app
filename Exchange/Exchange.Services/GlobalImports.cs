@@ -1,5 +1,5 @@
-﻿using ErrorOr;
-using Exchange.Domain.Database;
-using Exchange.Domain.Models;
-using Exchange.Services.ExchangeRate;
-using Microsoft.EntityFrameworkCore;
+﻿global using ErrorOr;
+global using Exchange.Domain.Database;
+global using Exchange.Domain.Models;
+global using Exchange.Services.ExchangeRate;
+global using Microsoft.EntityFrameworkCore;

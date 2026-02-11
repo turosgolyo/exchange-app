@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Numerics;
-using System.Text.Json.Serialization;
-
-namespace Exchange.Domain.Models;
+﻿namespace Exchange.Domain.Models;
 
 public partial class ExchangeRateModel : ObservableObject
 {
@@ -39,6 +35,10 @@ public partial class ExchangeRateModel : ObservableObject
     public ExchangeRateModel(ExchangeRateEntity entity)
     {
         this.Id = entity.Id;
+        this.ExchangeDate = entity.ExchangeDate;
+        this.UsdtoHUF = entity.USDtoHUF;
+        this.GbptoHUF = entity.GBPtoHUF;
+        this.ChftoHUF = entity.CHFtoHUF;
 
     }
 

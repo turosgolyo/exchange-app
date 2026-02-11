@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using Exchange.Services.Security;
-using Exchange.Services.User;
-
-namespace Exchange.WebAPI.Configurations;
+﻿namespace Exchange.WebAPI.Configurations;
 
 public static class DependencInjectionConfiguration
 {

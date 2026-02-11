@@ -1,8 +1,6 @@
-﻿
+﻿namespace Exchange.Services.Transaction;
 
-namespace Exchange.Services.Transaction;
-
-public class ExchangeService(ApplicationDbContext dbContext) : IExchangeRateService
+public class ExchangeRateService(ApplicationDbContext dbContext) : IExchangeRateService
 {
 
     public async Task<ErrorOr<ExchangeRateModel>> CreateAsync(ExchangeRateModel exchangeRate)
@@ -39,18 +37,16 @@ public class ExchangeService(ApplicationDbContext dbContext) : IExchangeRateServ
 
     public async Task<ErrorOr<Success>> UpdateAsync(ExchangeRateModel exchangeRate)
     {
-        var existingExchangeRate = await dbContext.ExchangeRates.FirstOrDefaultAsync(b => b.Id == exchangeRate.Id);
-
-        if (existingExchangeRate is null)
+        var existing = await dbContext.ExchangeRates.AsNoTracking().FirstOrDefaultAsync(b => b.Id == exchangeRate.Id);
+        if (existing is null)
         {
             return Error.NotFound();
         }
 
-        existingExchangeRate = exchangeRate.ToEntity();
+        var newEntity = exchangeRate.ToEntity();
 
-        dbContext.ExchangeRates.Update(existingExchangeRate);
+        dbContext.ExchangeRates.Update(newEntity);
         await dbContext.SaveChangesAsync();
-
         return Result.Success;
     }
 }
