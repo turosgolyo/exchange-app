@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
-
-namespace Exchange.Domain.Database;
+﻿namespace Exchange.Domain.Database;
 
 
 public sealed class ApplicationDbContext : IdentityDbContext<UserEntity, RoleEntity, Guid>

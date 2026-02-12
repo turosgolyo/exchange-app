@@ -9,6 +9,7 @@ using Exchange.Domain.Models.Settings;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace Exchange.Services.Security;
 
@@ -88,4 +89,3 @@ public class SecurityService(UserManager<UserEntity> userManager, IOptions<JWTSe
         };
     }
 }
-

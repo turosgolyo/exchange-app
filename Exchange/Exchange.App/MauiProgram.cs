@@ -8,6 +8,7 @@
             builder
                 .UseMauiApp<App>()
                 .UseDIConfiguration()
+                .UseMsSqlServer()
                 .ConfigureSyncfusionToolkit()
                 .ConfigureFonts(fonts =>
                 {
