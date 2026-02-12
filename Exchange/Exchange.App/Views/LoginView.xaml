@@ -40,7 +40,9 @@
                                                 ContainerType="Outlined"
                                                 Margin="20, 0, 20, 0"
                                                 Grid.Row="1">
-                    <Entry/>
+                    
+                    <Entry Text="{Binding Email}" />
+                    
                 </inputLayout:SfTextInputLayout>
 
                 <inputLayout:SfTextInputLayout  Hint="Password"
@@ -50,7 +52,9 @@
                                                 ContainerType="Outlined"
                                                 Grid.Row="2"
                                                 EnablePasswordVisibilityToggle="true">
-                    <Entry/>
+                    
+                    <Entry Text="{Binding Password}" />
+                    
                 </inputLayout:SfTextInputLayout>
 
                 <Button Text="LOGIN" 
