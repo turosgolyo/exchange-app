@@ -74,6 +74,7 @@
 	  <ProjectReference Include="..\Exchange.Domain\Exchange.Domain.csproj" />
 	  <ProjectReference Include="..\Exchange.Services\Exchange.Services.csproj" />
 	  <ProjectReference Include="..\Exchange.Shared\Exchange.Shared.csproj" />
+	  <ProjectReference Include="..\Exchange.WebAPI\Exchange.WebAPI.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -86,6 +87,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\ExchangeRateView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\MainView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
