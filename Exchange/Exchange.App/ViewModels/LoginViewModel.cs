@@ -7,6 +7,6 @@ public partial class LoginViewModel
     private async Task OnLogin()
     {
         Shell.Current.ClearNavigationStack();
-        await Shell.Current.GoToAsync(MainView.Name);
+        await Shell.Current.GoToAsync(ExchangeRateView.Name);
     }
 }
