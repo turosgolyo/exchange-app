@@ -9,12 +9,12 @@
     <Grid BackgroundColor="#CCFFFFFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="500"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="800"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -26,19 +26,35 @@
                 <RoundRectangle CornerRadius="25"/>
             </Border.StrokeShape>
 
-            <Grid ColumnDefinitions="*,*" RowDefinitions="2*, *, *, 2*">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*, *, *, *, *, *">
 
                 <Label Text="Set exchange rates"
-                       FontSize="Header"
+                       FontSize="Large"
                        FontAttributes="Bold"
-                       Margin="25,50,0,0"/>
+                       Margin="25,30,0,0"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"/>
+                <Border Grid.Row="1" 
+                        Margin="20, 0, 0, 0"
+                        Stroke="DimGray"
+                        HeightRequest="40"
+                        WidthRequest="150"
+                        HorizontalOptions="Start">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Label Text="{Binding DateTimeNowString}"
+                           FontSize="Small"
+                           VerticalOptions="Center"
+                           Margin="15, 0, 0, 0"/>
+                </Border>
 
                 <inputLayout:SfTextInputLayout  Hint="Usd to huf" 
                                                 HeightRequest="80"
                                                 Grid.ColumnSpan="2"
                                                 ContainerType="Outlined"
                                                 Margin="20, 0, 20, 0"
-                                                Grid.Row="1">
+                                                Grid.Row="2">
                     <Entry/>
                 </inputLayout:SfTextInputLayout>
 
@@ -47,7 +63,16 @@
                                                 Grid.ColumnSpan="2"
                                                 Margin="20, 0, 20, 0"
                                                 ContainerType="Outlined"
-                                                Grid.Row="2">
+                                                Grid.Row="3">
+                    <Entry/>
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout  Hint="Chf to huf"
+                                HeightRequest="80"
+                                Grid.ColumnSpan="2"
+                                Margin="20, 0, 20, 0"
+                                ContainerType="Outlined"
+                                Grid.Row="4">
                     <Entry/>
                 </inputLayout:SfTextInputLayout>
 
@@ -56,11 +81,11 @@
                         HeightRequest="40" 
                         VerticalOptions="End"
                         HorizontalOptions="Fill" 
-                        Margin="20" 
+                        Margin="20, 0, 20, 20" 
                         CornerRadius="10"
                         Padding="0" 
                         FontAttributes="Bold"
-                        Grid.Row="3" 
+                        Grid.Row="5" 
                         Grid.ColumnSpan="2"
                         Background="{StaticResource Primary}"
                         Command="{Binding SaveRatesCommand}"/>

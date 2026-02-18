@@ -8,8 +8,46 @@
     xmlns:views="clr-namespace:Exchange.App.Views"
     xmlns:viewModels="clr-namespace:Exchange.App.ViewModels">
     
+
+
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Exit" Command="{Binding ExitCommand}">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Exchange Rates">
+            <MenuFlyoutItem Text="Add Exchange Rate" Command="{Binding AddExchangeRateCommand}">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="Update Exchange Rate">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Transactions">
+            <MenuFlyoutItem Text="Buy">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="Sell">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+        </MenuBarItem>
+    </Shell.MenuBarItems>
+
     <ShellContent
-        ContentTemplate="{DataTemplate views:LoginView}" 
-        Route="login"/>
+        ContentTemplate="{DataTemplate views:MainView}" 
+        Route="main"/>
 
 </Shell>

@@ -5,19 +5,16 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Exchange.App.ViewModels;
 
-public partial class ExchangeRateViewModel : ExchangeRateModel
+public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateService) : ExchangeRateModel
 {
-    private readonly IExchangeRateService exchangeRateService;
 
     public IAsyncRelayCommand SaveRatesCommand => new AsyncRelayCommand(OnSaveAsync);
 
-    public ExchangeRateViewModel(IExchangeRateService exchangeRateService)
-    {
-        this.exchangeRateService = exchangeRateService;
-    }
+    [ObservableProperty]
+    private DateTime dateTimeNow = DateTime.Today;
 
     [ObservableProperty]
-    private DateTime date = DateTime.Today;
+    private string dateTimeNowString = DateTime.Today.ToString("yyyy-MM-mm");
 
     [ObservableProperty]
     private double usdToHuf;
@@ -35,7 +32,7 @@ public partial class ExchangeRateViewModel : ExchangeRateModel
     {
         var model = new ExchangeRateModel
         {
-            ExchangeDate = date,
+            ExchangeDate = DateTimeNow,
             UsdtoHUF = UsdToHuf,
             GbptoHUF = GbpToHuf,
             ChftoHUF = ChfToHuf
