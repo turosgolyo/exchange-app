@@ -14,7 +14,7 @@ public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateServ
     private DateTime dateTimeNow = DateTime.Today;
 
     [ObservableProperty]
-    private string dateTimeNowString = DateTime.Today.ToString("yyyy-MM-mm");
+    private string dateTimeNowString = DateTime.Today.ToString("yyyy-MM-dd");
 
     [ObservableProperty]
     private double usdToHuf;

@@ -55,7 +55,7 @@
                                                 ContainerType="Outlined"
                                                 Margin="20, 0, 20, 0"
                                                 Grid.Row="2">
-                    <Entry/>
+                    <Entry Text="{Binding UsdToHuf}"/>
                 </inputLayout:SfTextInputLayout>
 
                 <inputLayout:SfTextInputLayout  Hint="Gbp to huf"
@@ -64,7 +64,7 @@
                                                 Margin="20, 0, 20, 0"
                                                 ContainerType="Outlined"
                                                 Grid.Row="3">
-                    <Entry/>
+                    <Entry Text="{Binding GbpToHuf}"/>
                 </inputLayout:SfTextInputLayout>
 
                 <inputLayout:SfTextInputLayout  Hint="Chf to huf"
@@ -73,7 +73,7 @@
                                 Margin="20, 0, 20, 0"
                                 ContainerType="Outlined"
                                 Grid.Row="4">
-                    <Entry/>
+                    <Entry Text="{Binding ChfToHuf}"/>
                 </inputLayout:SfTextInputLayout>
 
                 <Button Text="Save rates" 
