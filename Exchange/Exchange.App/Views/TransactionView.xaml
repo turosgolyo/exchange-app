@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
+             x:DataType="viewModels:TransactionViewModel"
+             x:Class="Exchange.App.Views.TransactionView">
+    
+    <Grid RowDefinitions="*, *2, *" ColumnDefinitions="*, 2*, *">
+        
+        <Border Stroke="{StaticResource Primary}" 
+                Background="{StaticResource White}" 
+                Grid.Row="1"
+                Grid.Column="1">
+            
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="25"/>
+            </Border.StrokeShape>
+
+
+            <Label Text="Set exchange rates"
+               FontSize="Large"
+               FontAttributes="Bold"
+               Margin="25,30,0,0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"/>
+            <Border Grid.Row="1" 
+                Margin="20, 0, 0, 0"
+                Stroke="DimGray"
+                HeightRequest="40"
+                WidthRequest="150"
+                HorizontalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5"/>
+                </Border.StrokeShape>
+                <Label Text="{Binding DateTimeNowString}"
+                   FontSize="Small"
+                   VerticalOptions="Center"
+                   Margin="15, 0, 0, 0"/>
+            </Border>
+
+            <inputLayout:SfTextInputLayout  Hint="Usd to huf" 
+                                        HeightRequest="80"
+                                        Grid.ColumnSpan="2"
+                                        ContainerType="Outlined"
+                                        Margin="20, 0, 20, 0"
+                                        Grid.Row="2">
+                <Entry/>
+            </inputLayout:SfTextInputLayout>
+
+            <inputLayout:SfTextInputLayout  Hint="Gbp to huf"
+                                        HeightRequest="80"
+                                        Grid.ColumnSpan="2"
+                                        Margin="20, 0, 20, 0"
+                                        ContainerType="Outlined"
+                                        Grid.Row="3">
+                <Entry/>
+            </inputLayout:SfTextInputLayout>
+
+            <inputLayout:SfTextInputLayout  Hint="Chf to huf"
+                        HeightRequest="80"
+                        Grid.ColumnSpan="2"
+                        Margin="20, 0, 20, 0"
+                        ContainerType="Outlined"
+                        Grid.Row="4">
+                <Entry/>
+            </inputLayout:SfTextInputLayout>
+
+            <Button Text="Save rates" 
+                x:Name="saveRatesButton" 
+                HeightRequest="40" 
+                VerticalOptions="End"
+                HorizontalOptions="Fill" 
+                Margin="20, 0, 20, 20" 
+                CornerRadius="10"
+                Padding="0" 
+                FontAttributes="Bold"
+                Grid.Row="5" 
+                Grid.ColumnSpan="2"
+                Background="{StaticResource Primary}"
+                Command="{Binding SaveRatesCommand}"/>
+        </Border>
+    </Grid>
+    
+</ContentPage>
