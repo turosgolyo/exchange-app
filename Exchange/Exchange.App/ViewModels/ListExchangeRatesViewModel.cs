@@ -7,7 +7,7 @@ using System.Windows.Input;
 namespace Exchange.App.ViewModels;
 
 [ObservableObject]
-public partial class ListExchangeRatesViewModel(IExchangeRateService exchangeRateService)
+public partial class ListExchangeRatesViewModel(IExchangeRateService exchangeRateService) 
 {
     public IAsyncRelayCommand AppearingCommand => new AsyncRelayCommand(OnAppearingAsync);
 

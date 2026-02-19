@@ -16,11 +16,6 @@ public partial class ListExchangeRatesComponent : ContentView
         set => SetValue(CommandParameterProperty, value);
     }
 
-    public IAsyncRelayCommand DeleteCommand
-    {
-        get => (IAsyncRelayCommand)GetValue(DeleteCommandProperty);
-        set => SetValue(DeleteCommandProperty, value);
-    }
 
     public IAsyncRelayCommand EditCommand => new AsyncRelayCommand(OnEditAsync);
 
@@ -40,14 +35,6 @@ public partial class ListExchangeRatesComponent : ContentView
     public static readonly BindableProperty ExchangeRateProperty = BindableProperty.Create(
         propertyName: nameof(ExchangeRate),
         returnType: typeof(ExchangeRateModel),
-        declaringType: typeof(ListExchangeRatesComponent),
-        defaultValue: null,
-        defaultBindingMode: BindingMode.OneWay
-    );
-
-    public static readonly BindableProperty DeleteCommandProperty = BindableProperty.Create(
-        propertyName: nameof(DeleteCommand),
-        returnType: typeof(IAsyncRelayCommand),
         declaringType: typeof(ListExchangeRatesComponent),
         defaultValue: null,
         defaultBindingMode: BindingMode.OneWay
