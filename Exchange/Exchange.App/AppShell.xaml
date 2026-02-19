@@ -25,7 +25,7 @@
                     <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
                 </MenuFlyoutItem.IconImageSource>
             </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Update Exchange Rate">
+            <MenuFlyoutItem Text="List Exchange Rates" Command="{Binding ListExchangeRatesCommand}">
                 <MenuFlyoutItem.IconImageSource>
                     <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
                 </MenuFlyoutItem.IconImageSource>

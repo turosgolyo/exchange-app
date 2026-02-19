@@ -58,6 +58,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Common" Version="8.4.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui.Core" Version="14.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="ErrorOr" Version="2.0.1" />
 		<PackageReference Include="FluentAssertions" Version="8.8.0" />
@@ -87,12 +89,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Components\ListExchangeRatesComponent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ExchangeRateView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ListExchangeRatesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

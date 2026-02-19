@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Exchange.Domain.Models;assembly=Exchange.Domain"
+             xmlns:components="clr-namespace:Exchange.App.Components"
+             xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewModels:ListExchangeRatesViewModel"
+             x:Class="Exchange.App.Views.ListExchangeRatesView"
+             x:Name="this">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" 
+                                        EventName="Appearing"
+                                        BindingContext="{Binding Source={x:Reference this}, Path=BindingContext}"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               Text="List exchange rates"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Style="{StaticResource SubHeadline}"/>
+
+        <ScrollView Grid.Row="1">
+
+            <CollectionView ItemsSource="{Binding ExchangeRates}" Margin="50,0,50,0">
+
+                <CollectionView.Header>
+
+                    <Grid Padding="10,0,10,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                               Text="Exchange rate date"
+                               HorizontalTextAlignment="Center" />
+
+                        <Label Grid.Column="1"
+                               Text="USD to HUF"
+                               HorizontalTextAlignment="Center" />
+
+                        <Label Grid.Column="2"
+                               Text="GBP to HUF"
+                               HorizontalTextAlignment="Center" />
+                        <Label Grid.Column="3"
+                               Text="CHF to HUF"
+                               HorizontalTextAlignment="Center" />      
+                        <Label Grid.Column="4"
+                               Text="Edit"
+                               HorizontalTextAlignment="Center" />
+
+
+                    </Grid>
+
+                </CollectionView.Header>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.Footer>
+
+                    <FlexLayout JustifyContent="SpaceBetween" 
+                                Direction="Row"
+                                Margin="0,20">
+
+                        <Button Text="Previous page" Command="{Binding PreviousPageCommand}" />
+
+                        <Button Text="Next page" Command="{Binding NextPageCommand}" />
+
+                    </FlexLayout>
+
+                </CollectionView.Footer>
+
+            </CollectionView>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
