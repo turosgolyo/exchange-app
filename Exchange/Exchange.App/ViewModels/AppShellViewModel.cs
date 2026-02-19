@@ -12,7 +12,7 @@ public partial class AppShellViewModel
     private async Task OnAddTransactionAsync()
     {
         await Task.Delay(1);
-        await Shell.Current.GoToAsync(nameof(ExchangeRateView)); ;
+        await Shell.Current.GoToAsync(nameof(TransactionView)); ;
     }
 
     private async Task OnAddExchangeRateAsync()
