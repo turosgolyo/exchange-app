@@ -32,20 +32,23 @@
 
                 <Picker Title="Select a transaction type"
                         ItemsSource="{Binding TransactionTypes}"
+                        SelectedItem="{Binding NewTransaction.Type}"
                         ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="1"/>
 
                 <Picker Title="From currency "
-                        ItemsSource="{Binding TransactionTypes}"
+                        ItemsSource="{Binding Currency}"
+                        SelectedItem="{Binding NewTransaction.FromCurrency}"
                         ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="2"/>
 
                 <Picker Title="To currency "
-                        ItemsSource="{Binding TransactionTypes}"
+                        ItemsSource="{Binding Currency}"
+                        SelectedItem ="{Binding NewTransaction.ToCurrency}"
                         ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
@@ -62,11 +65,14 @@
                     <editors:SfNumericEntry HorizontalOptions="Center"
                                             CustomFormat="0"
                                             VerticalOptions="Center"
-                                            AllowNull="False" />
+                                            AllowNull="False" 
+                                            ValueChangeMode="OnLostFocus"
+                                            ValueChanged="Amount_ValueChanged"/>
                 </inputLayout:SfTextInputLayout>
 
                 <Picker Title="Select an ID type"
-                        ItemsSource="{Binding TransactionTypes}"
+                        ItemsSource="{Binding IdTypes}"
+                        SelectedItem="{Binding NewTransaction.IdType}"
                         ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
@@ -80,7 +86,7 @@
                                                 HelperText="Enter your ID number"
                                                 Margin="20, 20, 20, 30"
                                                 Grid.Row="6">
-                    <Entry Text="{Binding UsdToHuf}"/>
+                    <Entry Text="{Binding NewTransaction.IdNumber}"/>
                 </inputLayout:SfTextInputLayout>
 
 
@@ -95,7 +101,7 @@
                     FontAttributes="Bold"
                     Grid.Row="7" 
                     Background="{StaticResource Primary}"
-                    Command="{Binding SaveRatesCommand}"/>
+                    Command="{Binding SaveTransactionCommand}"/>
             </Grid>
             
         </Border>

@@ -8,7 +8,6 @@ global using Exchange.App.Extensions;
 global using Exchange.Domain.Database;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
-global using Exchange.DesktopApp.Configurations;
 global using Exchange.Services.Security;
 global using Microsoft.AspNetCore.Identity;
 global using Exchange.Domain.Database.Entities;

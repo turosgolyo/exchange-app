@@ -11,4 +11,6 @@ public partial class TransactionView : ContentPage
 		this.BindingContext = viewModel;
 		InitializeComponent();
 	}
+
+
 }
