@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Exchange.Domain.Models;
 using Exchange.Services.ExchangeRate;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Exchange.App.ViewModels;
 
