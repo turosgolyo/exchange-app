@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+             
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Toolkit.NumericEntry;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Toolkit.Picker;assembly=Syncfusion.Maui.Toolkit"
+             
+             x:DataType="viewModels:TransactionViewModel"
+             x:Class="Exchange.App.Views.TransactionView">
+    
+    <Grid RowDefinitions="*, 700, *" ColumnDefinitions="*, 800, *">
+        
+        <Border Stroke="{StaticResource Primary}" 
+                Background="{StaticResource White}" 
+                Grid.Row="1"
+                Grid.Column="1">
+            
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="25"/>
+            </Border.StrokeShape>
+
+            <Grid RowDefinitions="*, *, *, *, *, *, *, *">
+ 
+
+                <Label Text="Add transaction"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       Margin="25,30,0,0"
+                       Grid.Row="0"/>
+
+                <Picker Title="Select a transaction type"
+                        ItemsSource="{Binding TransactionTypes}"
+                        SelectedItem="{Binding NewTransaction.Type}"
+                        Margin="20, 20, 20, 20" 
+                        HeightRequest="70"
+                        Grid.Row="1"/>
+
+                <Picker Title="From currency "
+                        ItemsSource="{Binding Currency}"
+                        SelectedItem="{Binding NewTransaction.FromCurrency}"
+                        Margin="20, 20, 20, 20" 
+                        HeightRequest="70"
+                        Grid.Row="2"/>
+
+                <Picker Title="To currency "
+                        ItemsSource="{Binding Currency}"
+                        SelectedItem="{Binding NewTransaction.ToCurrency}"
+                        Margin="20, 20, 20, 20" 
+                        HeightRequest="70"
+                        Grid.Row="3"/>
+
+                <inputLayout:SfTextInputLayout  Hint="Amount" 
+                                                HelperText="Enter the amount of money to exchange"
+                                                HeightRequest="80"
+                                                Grid.ColumnSpan="2"
+                                                ContainerType="None"
+                                                IsHintAlwaysFloated="true" 
+                                                Margin="20, 20, 20, 20"
+                                                Grid.Row="4">
+                    <editors:SfNumericEntry HorizontalOptions="Center"
+                                            CustomFormat="0"
+                                            VerticalOptions="Center"
+                                            AllowNull="False" 
+                                            Value="{Binding NewTransaction.Amount}"/>
+                </inputLayout:SfTextInputLayout>
+
+                <Picker Title="Select an ID type"
+                        ItemsSource="{Binding IdTypes}"
+                        SelectedItem="{Binding NewTransaction.IdType}"
+                        Margin="20, 20, 20, 20" 
+                        HeightRequest="70"
+                        Grid.Row="5"/>
+
+                <inputLayout:SfTextInputLayout  Hint="ID number" 
+                                                HeightRequest="80"
+                                                Grid.ColumnSpan="2"
+                                                ContainerType="None"
+                                                IsHintAlwaysFloated="true" 
+                                                HelperText="Enter your ID number"
+                                                Margin="20, 20, 20, 30"
+                                                Grid.Row="6">
+                    <Entry Text="{Binding NewTransaction.IdNumber}"/>
+                </inputLayout:SfTextInputLayout>
+
+
+                <Button Text="Save rates" 
+                    x:Name="saveRatesButton" 
+                    HeightRequest="40" 
+                    VerticalOptions="End"
+                    HorizontalOptions="Fill" 
+                    Margin="20, 0, 20, 20" 
+                    CornerRadius="10"
+                    Padding="0" 
+                    FontAttributes="Bold"
+                    Grid.Row="7" 
+                    Background="{StaticResource Primary}"
+                    Command="{Binding SaveTransactionCommand}"/>
+            </Grid>
+            
+        </Border>
+        
+    </Grid>
+    
+</ContentPage>

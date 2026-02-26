@@ -43,6 +43,17 @@ public class ExchangeRateService(ApplicationDbContext dbContext) : IExchangeRate
         return Result.Success;
     }
 
+    public async Task<ErrorOr<ExchangeRateModel>> GetCurrentRateAsync()
+    {
+        var exchangeRate = await dbContext.ExchangeRates.Where(x => x.ExchangeDate.Date == DateTime.UtcNow.Date)
+                                                        .FirstOrDefaultAsync();
+
+        if (exchangeRate is null)
+        {
+            return Error.NotFound(description: "No exchange rate found for today!");
+        }
+
+        return new ExchangeRateModel(exchangeRate);
     public async Task<ErrorOr<PaginationModel<ExchangeRateModel>>> GetPagedAsync(int page = 0)
     {
         page = page <= 0 ? 1 : page - 1;

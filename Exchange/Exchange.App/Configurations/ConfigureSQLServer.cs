@@ -1,4 +1,4 @@
-﻿namespace Exchange.DesktopApp.Configurations;
+﻿namespace Exchange.App.Configurations;
 
 public static class ConfigureSQLServer
 {

@@ -18,5 +18,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(MainView.Name, typeof(MainView));
         Routing.RegisterRoute(ExchangeRateView.Name, typeof(ExchangeRateView));
         Routing.RegisterRoute(ListExchangeRatesView.Name, typeof(ListExchangeRatesView));
+        Routing.RegisterRoute(TransactionView.Name, typeof(TransactionView));
     }
 }

@@ -33,16 +33,13 @@
         </MenuBarItem>
 
         <MenuBarItem Text="Transactions">
-            <MenuFlyoutItem Text="Buy">
+            
+            <MenuFlyoutItem Text="Add Transaction" Command="{Binding AddTransactionCommand}">
                 <MenuFlyoutItem.IconImageSource>
                     <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
                 </MenuFlyoutItem.IconImageSource>
             </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Sell">
-                <MenuFlyoutItem.IconImageSource>
-                    <FontImageSource Glyph="&#x25B6;" FontFamily="Arial" Color="{AppThemeBinding Light=Black, Dark=White}"/>
-                </MenuFlyoutItem.IconImageSource>
-            </MenuFlyoutItem>
+            
         </MenuBarItem>
     </Shell.MenuBarItems>
 
