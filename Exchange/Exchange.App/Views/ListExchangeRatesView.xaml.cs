@@ -11,5 +11,11 @@ public partial class ListExchangeRatesView : ContentPage
         this.BindingContext = viewModel;
         InitializeComponent();
     }
+
+    protected override async void OnAppearing()
+    {
+        await ViewModel.AppearingCommand.ExecuteAsync(null);
+        base.OnAppearing();
+    }
 }
 

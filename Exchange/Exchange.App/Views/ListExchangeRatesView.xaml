@@ -11,7 +11,7 @@
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" 
-                                        EventName="Appearing"
+                                        EventName="OnAppearing"
                                         BindingContext="{Binding Source={x:Reference this}, Path=BindingContext}" />
     </ContentPage.Behaviors>
 
