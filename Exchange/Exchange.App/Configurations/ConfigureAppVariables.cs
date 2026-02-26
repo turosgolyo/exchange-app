@@ -5,7 +5,7 @@ public static class ConfigureAppVariables
     public static MauiAppBuilder UseAppConfigurations(this MauiAppBuilder builder)
     {
 #if DEBUG
-        var file = "appSettings.Development.json";
+        var file = "appsettings.json";
 #else
         var file = "connectionString.Production.json";
 #endif

@@ -1,22 +1,15 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Exchange.Domain.Enums;
-using Exchange.Domain.Models;
-using Exchange.Services.Transaction;
-using System.Collections.ObjectModel;
-using Windows.Globalization;
+﻿namespace Exchange.App.ViewModels;
 
-namespace Exchange.App.ViewModels;
-
-public partial class TransactionViewModel(ITransactionService transactionService): TransactionModel
+public partial class TransactionViewModel(ITransactionService transactionService, IExchangeRateService exchangeRateService): TransactionModel
 {
     [ObservableProperty]
-    public ICollection<string> transactionTypes = [TransactionType.Sell.ToString(), TransactionType.Buy.ToString()];
+    public ICollection<TransactionType> transactionTypes = [TransactionType.Sell, TransactionType.Buy];
 
     [ObservableProperty]
-    public ICollection<string> currency = [TransactionCurrency.HUF.ToString(), TransactionCurrency.USD.ToString(), TransactionCurrency.CHF.ToString(), TransactionCurrency.GBP.ToString()];
+    public ICollection<TransactionCurrency> currency = [TransactionCurrency.HUF, TransactionCurrency.USD, TransactionCurrency.CHF, TransactionCurrency.GBP];
 
     [ObservableProperty]
-    public ICollection<string> idTypes = [IdType.IDCard.ToString(), IdType.Passport.ToString()];
+    public ICollection<IdType> idTypes = [IdType.IDCard, IdType.Passport];
 
     [ObservableProperty]
     public TransactionModel newTransaction = new();
@@ -25,22 +18,24 @@ public partial class TransactionViewModel(ITransactionService transactionService
 
     private async Task OnSaveTransactionAsync()
     {
+        var exchangeRateResult = await exchangeRateService.GetCurrentRateAsync();
+        if (exchangeRateResult.IsError || exchangeRateResult.Value is null)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "No exchange rate found for today.", "OK");
+            return;
+        }
+
+
+        var exchangeRate = exchangeRateResult.Value;
+        NewTransaction.ExchangeRateId = exchangeRate.Id;
+        NewTransaction.UserId = Guid.Parse("FB3D5D2A-620A-450C-2332-08DE7507F434");
+
         var result = await transactionService.CreateAsync(NewTransaction);
 
-        var message = result.IsError
-           ? result.FirstError.Description
-           : "Exchange rate saved successfully.";
+        var message = result.IsError ? result.FirstError.Description : "Transaction was successful!";
 
         var title = result.IsError ? "Error" : "Success";
 
         await Application.Current.MainPage.DisplayAlert(title, message, "OK");
-    }
-
-    private void Amount_ValueChanged(object sender, Syncfusion.Maui.Toolkit.NumericEntry.NumericEntryValueChangedEventArgs e)
-    {
-        if (NewTransaction != null && e.NewValue.HasValue)
-        {
-            NewTransaction.Amount = e.NewValue.Value;
-        }
     }
 }

@@ -33,7 +33,6 @@
                 <Picker Title="Select a transaction type"
                         ItemsSource="{Binding TransactionTypes}"
                         SelectedItem="{Binding NewTransaction.Type}"
-                        ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="1"/>
@@ -41,15 +40,13 @@
                 <Picker Title="From currency "
                         ItemsSource="{Binding Currency}"
                         SelectedItem="{Binding NewTransaction.FromCurrency}"
-                        ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="2"/>
 
                 <Picker Title="To currency "
                         ItemsSource="{Binding Currency}"
-                        SelectedItem ="{Binding NewTransaction.ToCurrency}"
-                        ItemDisplayBinding="{Binding .}"
+                        SelectedItem="{Binding NewTransaction.ToCurrency}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="3"/>
@@ -66,14 +63,12 @@
                                             CustomFormat="0"
                                             VerticalOptions="Center"
                                             AllowNull="False" 
-                                            ValueChangeMode="OnLostFocus"
-                                            ValueChanged="Amount_ValueChanged"/>
+                                            Value="{Binding NewTransaction.Amount}"/>
                 </inputLayout:SfTextInputLayout>
 
                 <Picker Title="Select an ID type"
                         ItemsSource="{Binding IdTypes}"
                         SelectedItem="{Binding NewTransaction.IdType}"
-                        ItemDisplayBinding="{Binding .}"
                         Margin="20, 20, 20, 20" 
                         HeightRequest="70"
                         Grid.Row="5"/>
