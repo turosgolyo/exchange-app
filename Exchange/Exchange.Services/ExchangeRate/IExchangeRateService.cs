@@ -9,7 +9,6 @@ public interface IExchangeRateService
     Task<ErrorOr<ExchangeRateModel>> GetByIdAsync(int id);
     Task<ErrorOr<ExchangeRateModel>> CreateAsync(ExchangeRateModel exchangeRate);
     Task<ErrorOr<Success>> UpdateAsync(ExchangeRateModel exchangeRate);
-    Task<ErrorOr<Success>> DeleteAsync(int id);
     Task<ErrorOr<ExchangeRateModel>> GetCurrentRateAsync();
     Task<ErrorOr<PaginationModel<ExchangeRateModel>>> GetPagedAsync(int page = 0);
 

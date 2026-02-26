@@ -54,6 +54,7 @@ public class ExchangeRateService(ApplicationDbContext dbContext) : IExchangeRate
         }
 
         return new ExchangeRateModel(exchangeRate);
+    }
     public async Task<ErrorOr<PaginationModel<ExchangeRateModel>>> GetPagedAsync(int page = 0)
     {
         page = page <= 0 ? 1 : page - 1;
