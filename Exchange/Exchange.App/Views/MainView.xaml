@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
-             x:DataType="viewModels:MainViewModel"
-             x:Class="Exchange.App.Views.MainView">
+<ContentPage
+    x:Class="Exchange.App.Views.MainView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+    x:DataType="viewModels:MainViewModel">
     <Grid>
-        <Label 
-            Text="Exchange App"
+        <Label
             FontAttributes="Bold"
-            FontSize="Large" 
-            HorizontalOptions="Center" />
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="Exchange App" />
     </Grid>
 </ContentPage>

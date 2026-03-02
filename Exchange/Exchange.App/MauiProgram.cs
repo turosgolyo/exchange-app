@@ -1,4 +1,6 @@
-﻿namespace Exchange.App
+﻿using CommunityToolkit.Maui;
+
+namespace Exchange.App
 {
     public static class MauiProgram
     {
@@ -7,6 +9,7 @@
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+				.UseMauiCommunityToolkit()
                 .UseDIConfiguration()
                 .UseAppConfigurations()
                 .UseMsSqlServer()

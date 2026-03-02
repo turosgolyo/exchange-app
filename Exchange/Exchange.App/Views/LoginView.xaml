@@ -1,75 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Exchange.App.Views.LoginView"
-             x:DataType="viewModels:LoginViewModel"
-             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
-             BackgroundImageSource="currency_bg.png">
+<ContentPage
+    x:Class="Exchange.App.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+    x:DataType="viewModels:LoginViewModel"
+    BackgroundImageSource="currency_bg.png">
 
     <Grid BackgroundColor="#CCFFFFFF">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Stroke="{StaticResource Primary}" 
-                Background="{StaticResource White}" 
-                Grid.Row="1"
-                Grid.Column="1">
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="{StaticResource White}"
+            Stroke="{StaticResource Primary}">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="25"/>
-             </Border.StrokeShape>
+                <RoundRectangle CornerRadius="25" />
+            </Border.StrokeShape>
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="2*, *, *, 2*">
 
-                <Label Text="Login"
-                       FontSize="Header"
-                       FontAttributes="Bold"
-                       Margin="25,50,0,0"/>
+                <Label
+                    Margin="25,50,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Header"
+                    Text="Login" />
 
-                <inputLayout:SfTextInputLayout  Hint="Email" 
-                                                HeightRequest="80"
-                                                Grid.ColumnSpan="2"
-                                                ContainerType="Outlined"
-                                                Margin="20, 0, 20, 0"
-                                                Grid.Row="1">
-                    
+                <inputLayout:SfTextInputLayout
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="20,0,20,0"
+                    ContainerType="Outlined"
+                    HeightRequest="80"
+                    Hint="Email">
+
                     <Entry Text="{Binding Email}" />
-                    
+
                 </inputLayout:SfTextInputLayout>
 
-                <inputLayout:SfTextInputLayout  Hint="Password"
-                                                HeightRequest="80"
-                                                Grid.ColumnSpan="2"
-                                                Margin="20, 0, 20, 0"
-                                                ContainerType="Outlined"
-                                                Grid.Row="2"
-                                                EnablePasswordVisibilityToggle="true">
-                    
+                <inputLayout:SfTextInputLayout
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Margin="20,0,20,0"
+                    ContainerType="Outlined"
+                    EnablePasswordVisibilityToggle="true"
+                    HeightRequest="80"
+                    Hint="Password">
+
                     <Entry Text="{Binding Password}" />
-                    
+
                 </inputLayout:SfTextInputLayout>
 
-                <Button Text="LOGIN" 
-                        x:Name="loginButton" 
-                        HeightRequest="40" 
-                        VerticalOptions="End"
-                        HorizontalOptions="Fill" 
-                        Margin="20" 
-                        CornerRadius="10"
-                        Padding="0" 
-                        FontAttributes="Bold"
-                        Grid.Row="3" 
-                        Grid.ColumnSpan="2"
-                        Background="{StaticResource Primary}"
-                        Command="{Binding LoginCommand}"/>
+                <Button
+                    x:Name="loginButton"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Margin="20"
+                    Padding="0"
+                    Background="{StaticResource Primary}"
+                    Command="{Binding LoginCommand}"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    HeightRequest="40"
+                    HorizontalOptions="Fill"
+                    Text="LOGIN"
+                    VerticalOptions="End" />
             </Grid>
         </Border>
     </Grid>

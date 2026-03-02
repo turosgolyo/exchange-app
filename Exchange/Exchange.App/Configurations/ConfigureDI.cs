@@ -1,5 +1,7 @@
-﻿using Exchange.Services.ExchangeRate;
+﻿using Exchange.Shared.Validators;
+using Exchange.Services.ExchangeRate;
 using Exchange.Services.Transaction;
+using FluentValidation;
 
 namespace Exchange.App.Configurations;
 
@@ -7,6 +9,8 @@ public static class ConfigureDI
 {
     public static MauiAppBuilder UseDIConfiguration(this MauiAppBuilder builder)
     {
+        builder.Services.AddValidatorsFromAssemblyContaining<TransactionValidator>();
+
         //VIEWS
         builder.Services.AddTransient<MainView>();
         builder.Services.AddTransient<LoginView>();

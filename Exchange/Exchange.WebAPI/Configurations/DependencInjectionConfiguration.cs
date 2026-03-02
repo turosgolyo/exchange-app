@@ -1,4 +1,9 @@
-﻿namespace Exchange.WebAPI.Configurations;
+﻿using Exchange.Shared.Validators;
+using Exchange.WebAPI.Validators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+
+namespace Exchange.WebAPI.Configurations;
 
 public static class DependencInjectionConfiguration
 {
@@ -8,6 +13,10 @@ public static class DependencInjectionConfiguration
         {
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddHttpClient();
+
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
+			builder.Services.AddValidatorsFromAssemblyContaining<TransactionValidator>();
 
             builder.Services.AddTransient<ISecurityService, SecurityService>();
             builder.Services.AddTransient<IUserService, UserService>();

@@ -1,11 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Exchange.Domain.Models;
 using Exchange.Services.ExchangeRate;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace Exchange.App.ViewModels;
 
-public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateService) : ExchangeRateModel
+public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateService, IValidator<ExchangeRateModel> validator) : ExchangeRateModel
 {
+    [ObservableProperty]
+    private ValidationResult? validationResult;
 
     public IAsyncRelayCommand SaveRatesCommand => new AsyncRelayCommand(OnSaveAsync);
 
@@ -29,13 +33,12 @@ public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateServ
 
     private async Task OnSaveAsync()
     {
-        var model = new ExchangeRateModel
+        if (!Validate())
         {
-            ExchangeDate = DateTimeNow,
-            UsdtoHUF = UsdToHuf,
-            GbptoHUF = GbpToHuf,
-            ChftoHUF = ChfToHuf
-        };
+            return;
+        }
+
+        var model = CreateModelForValidation();
 
         var result = await exchangeRateService.CreateAsync(model);
 
@@ -46,5 +49,22 @@ public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateServ
         var title = result.IsError ? "Error" : "Success";
 
         await Application.Current.MainPage.DisplayAlert(title, message, "OK");
+    }
+
+    private ExchangeRateModel CreateModelForValidation() => new()
+    {
+        ExchangeDate = DateTimeNow,
+        UsdtoHUF = UsdToHuf,
+        GbptoHUF = GbpToHuf,
+        ChftoHUF = ChfToHuf
+    };
+
+    private bool Validate()
+    {
+        var model = CreateModelForValidation();
+        var validationResult = validator.Validate(model);
+        ValidationResult = validationResult;
+
+        return validationResult.IsValid;
     }
 }

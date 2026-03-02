@@ -1,7 +1,14 @@
-﻿namespace Exchange.App.ViewModels;
+﻿using FluentValidation;
+using FluentValidation.Results;
 
-public partial class TransactionViewModel(ITransactionService transactionService, IExchangeRateService exchangeRateService): TransactionModel
+namespace Exchange.App.ViewModels;
+
+public partial class TransactionViewModel(ITransactionService transactionService, IExchangeRateService exchangeRateService, IValidator<TransactionModel> validator) : TransactionModel
 {
+
+    [ObservableProperty]
+    private ValidationResult? validationResult;
+
     [ObservableProperty]
     public ICollection<TransactionType> transactionTypes = [TransactionType.Sell, TransactionType.Buy];
 
@@ -18,13 +25,17 @@ public partial class TransactionViewModel(ITransactionService transactionService
 
     private async Task OnSaveTransactionAsync()
     {
+        if (!Validate())
+        {
+            return;
+        }
+
         var exchangeRateResult = await exchangeRateService.GetCurrentRateAsync();
         if (exchangeRateResult.IsError || exchangeRateResult.Value is null)
         {
             await Application.Current.MainPage.DisplayAlert("Error", "No exchange rate found for today.", "OK");
             return;
         }
-
 
         var exchangeRate = exchangeRateResult.Value;
         NewTransaction.ExchangeRateId = exchangeRate.Id;
@@ -37,5 +48,13 @@ public partial class TransactionViewModel(ITransactionService transactionService
         var title = result.IsError ? "Error" : "Success";
 
         await Application.Current.MainPage.DisplayAlert(title, message, "OK");
+    }
+
+    private bool Validate()
+    {
+        var validationResult = validator.Validate(NewTransaction, options => options.IncludeProperties(x => x.Amount, x => x.IdNumber, x => x.FromCurrency));
+        ValidationResult = validationResult;
+
+        return validationResult.IsValid;
     }
 }
