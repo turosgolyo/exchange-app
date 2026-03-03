@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Exchange.App.Components.ListExchangeRatesComponent"
-             x:Name="this">
+<ContentView
+    x:Class="Exchange.App.Components.ListExchangeRatesComponent"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="this">
 
-    <Border Padding="0,10,0,10"
-            StrokeShape="RoundRectangle 30">
+    <Border Padding="0,10,0,10" StrokeShape="RoundRectangle 30">
 
         <Grid>
 
@@ -13,39 +13,45 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="80" />
-                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column ="0" 
-               Text="{Binding ExchangeRate.ExchangeDate, Source={x:Reference this}}"
-               HorizontalTextAlignment ="Center"
-               VerticalTextAlignment="Center"/>
+            <Label
+                Grid.Column="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ExchangeRate.ExchangeDate, Source={x:Reference this}}"
+                VerticalTextAlignment="Center" />
 
-            <Label Grid.Column ="1" 
-               Text="{Binding ExchangeRate.UsdtoHUF, Source={x:Reference this}}"
-               HorizontalTextAlignment ="Center"
-               VerticalTextAlignment="Center"/>
+            <Label
+                Grid.Column="1"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ExchangeRate.UsdtoHUF, Source={x:Reference this}}"
+                VerticalTextAlignment="Center" />
 
-            <Label Grid.Column ="2" 
-               Text="{Binding ExchangeRate.GbptoHUF, Source={x:Reference this}}"
-               HorizontalTextAlignment ="Center"
-               VerticalTextAlignment="Center"/>
-            <Label Grid.Column ="3" 
-               Text="{Binding ExchangeRate.ChftoHUF, Source={x:Reference this}}"
-               HorizontalTextAlignment ="Center"
-               VerticalTextAlignment="Center"/>
+            <Label
+                Grid.Column="2"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ExchangeRate.GbptoHUF, Source={x:Reference this}}"
+                VerticalTextAlignment="Center" />
+            <Label
+                Grid.Column="3"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ExchangeRate.ChftoHUF, Source={x:Reference this}}"
+                VerticalTextAlignment="Center" />
 
 
-            <ImageButton Grid.Column="4" 
-                         Source="pencil.png"
-                         Margin="0, 0, 20, 0"
-                         Command="{Binding EditCommand, Source={x:Reference this}}"
-                         HorizontalOptions="End"
-                         VerticalOptions="Center"
-                         WidthRequest="5"
-                         HeightRequest="5"
-                         BackgroundColor="Transparent"/>
+            <ImageButton
+                Grid.Column="4"
+                Margin="0,0,20,0"
+                BackgroundColor="Transparent"
+                Command="{Binding EditCommand, Source={x:Reference this}}"
+                HeightRequest="5"
+                HorizontalOptions="Center"
+                IsVisible="{Binding ExchangeRate.ExchangeDate, Source={x:Reference this}, Converter={StaticResource IsDateTodayConverter}}"
+                Source="pencil.png"
+                VerticalOptions="Center"
+                WidthRequest="5" />
 
         </Grid>
 

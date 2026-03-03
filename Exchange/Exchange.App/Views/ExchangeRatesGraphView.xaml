@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Exchange.App.Views.ExchangeRatesGraphView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:Exchange.App.ViewModels"
+    x:Name="this"
+    Title="Exchange Rates"
+    x:DataType="viewModels:ExchangeRatesGraphViewModel">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            BindingContext="{Binding Source={x:Reference this}, Path=BindingContext}"
+            Command="{Binding AppearingCommand}"
+            EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <Grid Padding="16" BackgroundColor="#CCFFFFFF">
+        <chart:SfCartesianChart>
+
+            <chart:SfCartesianChart.Legend>
+                <chart:ChartLegend />
+            </chart:SfCartesianChart.Legend>
+
+            <chart:SfCartesianChart.XAxes>
+                <chart:DateTimeAxis>
+                    <chart:DateTimeAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle LabelFormat="dd MMM" />
+                    </chart:DateTimeAxis.LabelStyle>
+                    <chart:DateTimeAxis.Title>
+                        <chart:ChartAxisTitle Text="Date" />
+                    </chart:DateTimeAxis.Title>
+                </chart:DateTimeAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Rate (HUF)" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+            <chart:LineSeries
+                Label="USD/HUF"
+                ItemsSource="{Binding ExchangeRates}"
+                ShowDataLabels="False"
+                XBindingPath="ExchangeDate"
+                YBindingPath="UsdtoHUF" />
+
+            <chart:LineSeries
+                Label="GBP/HUF"
+                ItemsSource="{Binding ExchangeRates}"
+                ShowDataLabels="False"
+                XBindingPath="ExchangeDate"
+                YBindingPath="GbptoHUF" />
+
+            <chart:LineSeries
+                Label="CHF/HUF"
+                ItemsSource="{Binding ExchangeRates}"
+                ShowDataLabels="False"
+                XBindingPath="ExchangeDate"
+                YBindingPath="ChftoHUF" />
+
+        </chart:SfCartesianChart>
+    </Grid>
+</ContentPage>

@@ -106,6 +106,9 @@
 	  <MauiXaml Update="Components\ListExchangeRatesComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ExchangeRatesGraphView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ExchangeRateView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

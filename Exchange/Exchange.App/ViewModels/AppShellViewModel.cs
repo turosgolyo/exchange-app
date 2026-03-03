@@ -6,8 +6,15 @@ namespace Exchange.App.ViewModels;
 public partial class AppShellViewModel
 {
     public IAsyncRelayCommand ExitCommand => new AsyncRelayCommand(OnExitAsync);
+    public IAsyncRelayCommand ExchangeRatesStatistics => new AsyncRelayCommand(OnExchangeRatesStatistics);
     public IAsyncRelayCommand AddExchangeRateCommand => new AsyncRelayCommand(OnAddExchangeRateAsync);
     public IAsyncRelayCommand ListExchangeRatesCommand => new AsyncRelayCommand(OnListExchangeRatesAsync);
+
+    private async Task OnExchangeRatesStatistics()
+    {
+        await Task.Delay(1);
+        await Shell.Current.GoToAsync(nameof(ExchangeRatesGraphView));
+    }
 
     private async Task OnListExchangeRatesAsync()
     {

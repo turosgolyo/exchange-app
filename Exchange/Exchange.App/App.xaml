@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <converters:ValidationResultHasErrorConverter x:Key="ValidationResultHasErrorConverter" />
             <converters:ValidationResultToErrorMessagesConverter x:Key="ValidationResultToErrorMessagesConverter" />
+            <converters:IsDateTodayConverter x:Key="IsDateTodayConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

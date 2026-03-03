@@ -21,12 +21,10 @@ public partial class ListExchangeRatesComponent : ContentView
 
     private async Task OnEditAsync()
     {
-        ShellNavigationQueryParameters navigationQueryParameter = new ShellNavigationQueryParameters
+        ShellNavigationQueryParameters navigationQueryParameter = new()
         {
-            { "Exchange rate", this.ExchangeRate}
+            { "Exchange rate", this.ExchangeRate }
         };
-
-        Shell.Current.ClearNavigationStack();
         await Shell.Current.GoToAsync(ExchangeRateView.Name, navigationQueryParameter);
     }
 

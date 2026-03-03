@@ -19,7 +19,7 @@ public class ExchangeRateService(ApplicationDbContext dbContext) : IExchangeRate
 
     public async Task<ErrorOr<ExchangeRateModel>> GetByIdAsync(int id)
     {
-        var exchangeRate = await dbContext.ExchangeRates.FirstOrDefaultAsync(x => x.Id == id);
+       var exchangeRate = await dbContext.ExchangeRates.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 
         if (exchangeRate is null)
         {
@@ -30,23 +30,23 @@ public class ExchangeRateService(ApplicationDbContext dbContext) : IExchangeRate
 
     public async Task<ErrorOr<Success>> UpdateAsync(ExchangeRateModel exchangeRate)
     {
-        var existing = await dbContext.ExchangeRates.AsNoTracking().FirstOrDefaultAsync(b => b.Id == exchangeRate.Id);
+       var existing = await dbContext.ExchangeRates.FirstOrDefaultAsync(b => b.Id == exchangeRate.Id);
         if (existing is null)
         {
             return Error.NotFound();
         }
 
-        var newEntity = exchangeRate.ToEntity();
+       exchangeRate.ToEntity(existing);
 
-        dbContext.ExchangeRates.Update(newEntity);
         await dbContext.SaveChangesAsync();
         return Result.Success;
     }
 
     public async Task<ErrorOr<ExchangeRateModel>> GetCurrentRateAsync()
     {
-        var exchangeRate = await dbContext.ExchangeRates.Where(x => x.ExchangeDate.Date == DateTime.UtcNow.Date)
-                                                        .FirstOrDefaultAsync();
+       var exchangeRate = await dbContext.ExchangeRates.AsNoTracking()
+                                                       .Where(x => x.ExchangeDate.Date == DateTime.UtcNow.Date)
+                                                       .FirstOrDefaultAsync();
 
         if (exchangeRate is null)
         {

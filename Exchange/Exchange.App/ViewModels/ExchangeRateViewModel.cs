@@ -6,12 +6,29 @@ using FluentValidation.Results;
 
 namespace Exchange.App.ViewModels;
 
-public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateService, IValidator<ExchangeRateModel> validator) : ExchangeRateModel
+public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateService, IValidator<ExchangeRateModel> validator) : ExchangeRateModel, IQueryAttributable
 {
     [ObservableProperty]
     private ValidationResult? validationResult;
 
+    [ObservableProperty]
+    private string formTitle = "Set exchange rates";
+
     public IAsyncRelayCommand SaveRatesCommand => new AsyncRelayCommand(OnSaveAsync);
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (!query.TryGetValue("Exchange rate", out var value) || value is not ExchangeRateModel model)
+            return;
+
+        Id = model.Id;
+        DateTimeNow = model.ExchangeDate;
+        DateTimeNowString = model.ExchangeDate.ToString("yyyy-MM-dd");
+        UsdToHuf = model.UsdtoHUF;
+        GbpToHuf = model.GbptoHUF;
+        ChfToHuf = model.ChftoHUF;
+        FormTitle = "Edit exchange rate";
+    }
 
     [ObservableProperty]
     private DateTime dateTimeNow = DateTime.Today;
@@ -40,19 +57,31 @@ public partial class ExchangeRateViewModel(IExchangeRateService exchangeRateServ
 
         var model = CreateModelForValidation();
 
-        var result = await exchangeRateService.CreateAsync(model);
+        bool isError;
+        string? errorMessage;
 
-        var message = result.IsError
-            ? result.FirstError.Description
-            : "Exchange rate saved successfully.";
+        if (Id > 0)
+        {
+            var result = await exchangeRateService.UpdateAsync(model);
+            isError = result.IsError;
+            errorMessage = result.IsError ? result.FirstError.Description : null;
+        }
+        else
+        {
+            var result = await exchangeRateService.CreateAsync(model);
+            isError = result.IsError;
+            errorMessage = result.IsError ? result.FirstError.Description : null;
+        }
 
-        var title = result.IsError ? "Error" : "Success";
+        var message = isError ? errorMessage : "Exchange rate saved successfully.";
+        var title = isError ? "Error" : "Success";
 
         await Application.Current.MainPage.DisplayAlert(title, message, "OK");
     }
 
     private ExchangeRateModel CreateModelForValidation() => new()
     {
+        Id = Id,
         ExchangeDate = DateTimeNow,
         UsdtoHUF = UsdToHuf,
         GbptoHUF = GbpToHuf,

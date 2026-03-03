@@ -17,6 +17,7 @@ public static class ConfigureDI
         builder.Services.AddTransient<ExchangeRateView>();
         builder.Services.AddTransient<ListExchangeRatesView>();
         builder.Services.AddTransient<TransactionView>();
+        builder.Services.AddTransient<ExchangeRatesGraphView>();
 
         //VIEWMODELS
         builder.Services.AddTransient<MainViewModel>();
@@ -24,6 +25,7 @@ public static class ConfigureDI
         builder.Services.AddTransient<ExchangeRateViewModel>();
         builder.Services.AddTransient<ListExchangeRatesViewModel>();
         builder.Services.AddTransient<TransactionViewModel>();
+        builder.Services.AddTransient<ExchangeRatesGraphViewModel>();
 
         //SERVICES
         builder.Services.AddTransient<IExchangeRateService, ExchangeRateService>();

@@ -36,7 +36,7 @@
                     Margin="25,30,0,0"
                     FontAttributes="Bold"
                     FontSize="Large"
-                    Text="Set exchange rates" />
+                    Text="{Binding FormTitle}" />
                 <Border
                     Grid.Row="1"
                     Margin="20,0,0,0"
